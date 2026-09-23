@@ -1,0 +1,14 @@
+{
+  "name": "video-call-app",
+  "version": "1.0.0",
+  "description": "Two-person WebRTC video calling application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
+}
