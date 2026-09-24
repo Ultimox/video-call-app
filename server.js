@@ -91,9 +91,6 @@ function removeUserFromRoom(socket) {
     socket.data.roomId = null;
 }
 
-server.listen(PORT, () => {
-    console.log(`Video call server running at http://localhost:${PORT}`);
-});
 
 server.listen(PORT, "0.0.0.0", () => {
     console.log(`Video call server running on port ${PORT}`);
