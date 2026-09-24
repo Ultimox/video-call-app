@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swapy - Video Call</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <section id="joinScreen" class="join-screen">
+            <div class="join-card">
+                <div class="logo">
+                    <div class="logo-icon">◉</div>
+                    <h1>Swapy Video Call </h1>
+                </div>
+
+                <p class="subtitle">Secure two-person video calling</p>
+
+                <label for="roomInput">Room ID</label>
+
+                <input id="roomInput" type="text" placeholder="Enter room ID" autocomplete="off">
+
+                <button id="joinBtn" class="primary-btn">
+                    Join Video Call
+                </button>
+
+                <p id="joinError" class="error"></p>
+
+                <div class="info">
+                    <span>📹</span> Camera & microphone
+                    <span>•</span>
+                    <span>🖥️</span> Screen sharing
+                </div>
+            </div>
+        </section>
+
+        <section id="callScreen" class="call-screen hidden">
+
+            <header class="top-bar">
+                <div class="brand">
+                    <div class="small-logo">◉</div>
+                    <span>Connect</span>
+                </div>
+
+                <div class="room-info">
+                    <span id="connectionStatus">Waiting for participant...</span>
+                    <span class="separator">|</span>
+                    <span id="roomDisplay">Room</span>
+                </div>
+
+                <div class="call-time" id="callTimer">00:00</div>
+            </header>
+
+            <main class="video-area">
+
+                <div id="remoteVideoContainer" class="remote-video-container">
+                    <video id="remoteVideo" autoplay playsinline></video>
+
+                    <div id="remotePlaceholder" class="video-placeholder">
+                        <div class="avatar">U</div>
+                        <p id="remoteName">Waiting for participant</p>
+                    </div>
+
+                    <div class="participant-name">
+                        <span class="online-dot"></span>
+                        Participant
+                    </div>
+                </div>
+
+                <div id="localVideoContainer" class="local-video-container">
+                    <video id="localVideo" autoplay muted playsinline></video>
+
+                    <div id="localPlaceholder" class="small-placeholder">
+                        Camera Off
+                    </div>
+
+                    <div class="participant-name">You</div>
+                </div>
+
+                <div id="screenShareContainer" class="screen-share-container hidden">
+                    <video id="screenVideo" autoplay playsinline></video>
+                    <div class="screen-label">🖥️ You are sharing your screen</div>
+                </div>
+
+                <div id="waitingMessage" class="waiting-message">
+                    <div class="loading-circle"></div>
+                    <h2>Waiting for another person</h2>
+                    <p>Ask the other participant to join:</p>
+                    <strong id="waitingRoomId">-</strong>
+                </div>
+
+            </main>
+
+            <footer class="controls">
+
+                <button id="micBtn" class="control" title="Mute microphone">
+                    🎙️
+                    <span>Mute</span>
+                </button>
+
+                <button id="cameraBtn" class="control" title="Turn camera off">
+                    📹
+                    <span>Camera</span>
+                </button>
+
+                <button id="screenBtn" class="control" title="Share screen">
+                    🖥️
+                    <span>Share</span>
+                </button>
+
+                <button id="copyBtn" class="control" title="Copy room ID">
+                    🔗
+                    <span>Copy</span>
+                </button>
+
+                <button id="endBtn" class="control end" title="End call">
+                    📞
+                    <span>End</span>
+                </button>
+
+            </footer>
+        </section>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
