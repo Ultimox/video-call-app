@@ -12,6 +12,10 @@ const rooms = new Map();
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 
@@ -89,4 +93,8 @@ function removeUserFromRoom(socket) {
 
 server.listen(PORT, () => {
     console.log(`Video call server running at http://localhost:${PORT}`);
+});
+
+server.listen(PORT, "0.0.0.0", () => {
+    console.log(`Video call server running on port ${PORT}`);
 });
